@@ -1,28 +1,32 @@
 {
-  "name": "NextJS-demo-app",
-  "version": "1.0.0",
+  "name": "@toomuchdesign/next-react-router",
+  "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
+  "files": [
+    "src",
+    "!__tests__"
+  ],
   "scripts": {
-    "dev": "next",
+    "test": "echo \"No test specified\"",
+    "start": "node server.js",
     "build": "next build",
-    "start": "next start"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jaydpather/NextJS-demo-app.git"
+    "serve": "NODE_ENV=production node server.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jaydpather/NextJS-demo-app/issues"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toomuchdesign/next-react-router.git"
   },
-  "homepage": "https://github.com/jaydpather/NextJS-demo-app#readme",
+  "author": "Andrea Carraro <me@andreacarraro.it>",
+  "license": "ISC",
   "dependencies": {
-    "next": "^9.1.6",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-router-dom": "^5.1.2"
+    "express": "^4.17.1",
+    "next": "^9.0.2",
+    "next-server": "^9.0.5",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1"
   }
 }

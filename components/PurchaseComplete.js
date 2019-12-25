@@ -1,5 +1,5 @@
 export default function PurchaseComplete(){
-    return(
+    return (
         <div>
             <div>
                 <h1>
