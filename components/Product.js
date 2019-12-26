@@ -5,12 +5,21 @@ import {
 export default function Product(){
     return(
         <div>
-            <div>
-                product name
+            <div className='border'>
+                <div>
+                    product name
+                </div>
+                <div>
+                    <NavLink to="/purchaseComplete">BUY NOW</NavLink>
+                </div>
             </div>
-            <div>
-                <NavLink to="/purchaseComplete">BUY NOW</NavLink>
-            </div>
+            <style jsx>{`
+                .border{
+                    border: solid 1px black;
+                    display: inline-block;
+                    padding: 5px;
+                }
+            `}</style>
         </div>
     );
 }

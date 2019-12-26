@@ -1,16 +1,18 @@
+import { NavLink } from "react-router-dom";
+
 export default function PurchaseComplete(){
     return (
         <div>
             <div>
-                <h1>
-                    Purchase Complete
-                </h1>
                 <h2>
-                    Thank you
+                    Purchase Complete
                 </h2>
+                <h3>
+                    Thank you
+                </h3>
             </div>
             <div>
-                BACK TO HOME PAGE
+                <NavLink to="/">BACK TO HOME PAGE</NavLink>
             </div>
         </div>
     );

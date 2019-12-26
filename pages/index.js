@@ -1,6 +1,9 @@
 import { Route, Link, Switch } from "react-router-dom";
 import { Redirect } from 'react-router'
+
+import Product from '../components/Product'
 import PurchaseComplete from '../components/PurchaseComplete'
+
 
 function Status({ code, children }) {
   return (
@@ -11,18 +14,6 @@ function Status({ code, children }) {
       }}
     />
   );
-}
-
-function Index() {
-  return <h2>Home</h2>;
-}
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
 }
 
 function NotFound() {
@@ -37,33 +28,13 @@ function NotFound() {
 function App() {
   return(
     <div>
-      <h1>Welcome to Next.js!</h1>
+      <h1>Welcome to my online store!</h1>
       <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about/">About</Link>
-          </li>
-          <li>
-            <Link to="/users/">Users</Link>
-          </li>
-          <li>
-            <Link to="/people/">People</Link>
-          </li>
-          <li>
-            <Link to="/PurchaseComplete/">Purchase Complete</Link>
-          </li>
-        </ul>
       </nav>
 
       <Switch>
-        <Route path="/" exact component={Index} />
-        <Route path="/about/" component={About} />
-        <Route path="/users/" component={Users} />
-        <Redirect from="/people/" to="/users/" />
-        <Route path="/PurchaseComplete/" component={PurchaseComplete} />
+        <Route path="/" exact component={Product} />
+        <Route path="/purchaseComplete/" component={PurchaseComplete} />
         <Route component={NotFound}/>
       </Switch>
     </div>
