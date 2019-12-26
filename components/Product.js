@@ -2,12 +2,12 @@ import {
     NavLink,
   } from "react-router-dom";
 
-export default function Product(){
+export default function Product(props){
     return(
         <div>
             <div className='border'>
                 <div>
-                    product name
+                    {props.displayId}
                 </div>
                 <div>
                     <NavLink to="/purchaseComplete">BUY NOW</NavLink>

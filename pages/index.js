@@ -32,7 +32,7 @@ function App() {
       </nav>
 
       <Switch>
-        <Route path="/" exact render={(props) => <ProductGrid {...props} height={4} width={3} />} />
+        <Route path="/" exact render={(props) => <ProductGrid {...props} />} />
         <Route path="/purchaseComplete/" component={PurchaseComplete} />
         <Route component={NotFound}/>
       </Switch>
