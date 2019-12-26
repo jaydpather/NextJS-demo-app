@@ -1,8 +1,7 @@
-import { Route, Link, Switch } from "react-router-dom";
-import { Redirect } from 'react-router'
+import { Route, Switch } from "react-router-dom";
 
-import Product from '../components/Product'
 import PurchaseComplete from '../components/PurchaseComplete'
+import ProductGrid from "../components/ProductGrid";
 
 
 function Status({ code, children }) {
@@ -33,7 +32,7 @@ function App() {
       </nav>
 
       <Switch>
-        <Route path="/" exact component={Product} />
+        <Route path="/" exact render={(props) => <ProductGrid {...props} height={4} width={3} />} />
         <Route path="/purchaseComplete/" component={PurchaseComplete} />
         <Route component={NotFound}/>
       </Switch>
