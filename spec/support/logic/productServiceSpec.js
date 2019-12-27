@@ -2,10 +2,7 @@ import ProductRepository from '../../../dataAccess/productRepository'
 import ProductService from '../../../logic/productService'
 
 describe("ProductService", function(){
-    //const ProductRepository = require('../../../dataAccess/productRepository');
     var productRepository = null;
-
-    //const ProductService = require('../../../logic/productService');
     var productService = null;
 
     beforeEach(function(){
@@ -14,7 +11,11 @@ describe("ProductService", function(){
     });
 
     it("getProduct should call Repository", function(){
+        spyOn(productRepository, 'getProducts'); //spyOn also prevents regular method from being called
+        
         productService.getProducts();
+
+        expect(productRepository.getProducts).toHaveBeenCalled();
     });
 
     
