@@ -1,6 +1,7 @@
 import { Route, Switch } from "react-router-dom";
 
 import ProductService from '../logic/productService'
+import ProductRepository from '../dataAccess/productRepository'
 
 import PurchaseComplete from '../components/PurchaseComplete'
 import ProductGrid from "../components/ProductGrid";
@@ -27,18 +28,13 @@ function NotFound() {
 }
 
 function App() {
-  //todo:
-  //  * instantiate business layer
-  //    * instatiate data layer
-  //  * pass business layer to Components as a prop
-
   /*
   spyOn(foo, "getBar").and.callFake(function(arguments, can, be, received) {
     return 1001;
   });
   */
-
-  var productService = new ProductService();
+  var productRepository = new ProductRepository();
+  var productService = new ProductService(productRepository);
 
   return(
     <div>
