@@ -4,8 +4,8 @@ import {
 
 export default function Product(props){
     return(
-        <div>
-            <div className='border'>
+        <div className="card border-primary">
+            <div className='card-body'>
                 <div>
                     {props.displayId}
                 </div>
@@ -14,10 +14,8 @@ export default function Product(props){
                 </div>
             </div>
             <style jsx>{`
-                .border{
-                    border: solid 1px black;
-                    display: inline-block;
-                    padding: 5px;
+                .border-primary{
+                    border-style: solid;
                 }
             `}</style>
         </div>
