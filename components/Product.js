@@ -1,6 +1,8 @@
-import {
-    NavLink,
-  } from "react-router-dom";
+import { NavLink } from "react-router-dom"
+
+function btnAddToCart_Click(props){
+    props.ShoppingCartService.addToCart(props.displayId);
+}
 
 export default function Product(props){
     return(
@@ -9,8 +11,11 @@ export default function Product(props){
                 <div>
                     {props.displayId}
                 </div>
-                <div className="ADD TO CART">
-                    
+                <div>
+
+                <button type="button" className="btn btn-primary" onClick={() => btnAddToCart_Click(props) }>
+                    Add to Cart
+                </button>
                 </div>
                 <div>
                     <NavLink to="/purchaseComplete">BUY NOW</NavLink>
@@ -26,7 +31,3 @@ export default function Product(props){
         </div>
     );
 }
-
-/*
-
-*/

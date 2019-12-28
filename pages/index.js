@@ -1,10 +1,15 @@
 import { Route, Switch } from "react-router-dom"
 
 import ProductService from '../logic/productService'
+import ShoppingCartService from "../logic/shoppingCartService";
+
 import ProductRepository from '../dataAccess/productRepository'
+import ShoppingCartRepository from "../localDataAccess/shoppingCartRepository";
 
 import PurchaseComplete from '../components/PurchaseComplete'
 import ProductGrid from "../components/ProductGrid";
+
+
 
 
 function Status({ code, children }) {
@@ -28,13 +33,11 @@ function NotFound() {
 }
 
 function App() {
-  /*
-  spyOn(foo, "getBar").and.callFake(function(arguments, can, be, received) {
-    return 1001;
-  });
-  */
-  var productRepository = new ProductRepository();
-  var productService = new ProductService(productRepository);
+  const productRepository = new ProductRepository();
+  const productService = new ProductService(productRepository);
+
+  const shoppingCartRepository = new ShoppingCartRepository();
+  const shoppingCartService = new ShoppingCartService(shoppingCartRepository);
 
   return(
     <div>
@@ -44,8 +47,15 @@ function App() {
       </nav>
 
       <Switch>
-        <Route path="/" exact render={(props) => <ProductGrid {...props} ProductService={productService} />} />
+        <Route path="/" exact render={(props) => 
+          <ProductGrid {...props} 
+            ProductService={productService} 
+            ShoppingCartService={shoppingCartService} 
+          />} 
+        />
+
         <Route path="/purchaseComplete/" component={PurchaseComplete} />
+        
         <Route component={NotFound}/>
       </Switch>
     </div>
