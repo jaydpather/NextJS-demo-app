@@ -4,7 +4,7 @@ import ProductService from '../logic/productService'
 import ShoppingCartService from "../logic/shoppingCartService";
 
 import ProductRepository from '../dataAccess/productRepository'
-import ShoppingCartRepository from "../localDataAccess/shoppingCartRepository";
+import LocalStorageRepository from "../localDataAccess/localStorageRepository";
 
 import PurchaseComplete from '../components/PurchaseComplete'
 import ProductGrid from "../components/ProductGrid";
@@ -36,8 +36,8 @@ function App() {
   const productRepository = new ProductRepository();
   const productService = new ProductService(productRepository);
 
-  const shoppingCartRepository = new ShoppingCartRepository();
-  const shoppingCartService = new ShoppingCartService(shoppingCartRepository);
+  const localStorageRepository = new LocalStorageRepository();
+  const shoppingCartService = new ShoppingCartService(localStorageRepository);
 
   return(
     <div>

@@ -1,20 +1,22 @@
-import ShoppingCartRepository from '../../../localDataAccess/shoppingCartRepository'
+import LocalStorageRepository from "../../../localDataAccess/localStorageRepository";
 import ShoppingCartService from '../../../logic/shoppingCartService'
 
 describe("ShoppingCartService", function(){
-    var shoppingCartRepository = null;
+    var localStorageRepository = null;
     var shoppingCartService = null;
 
     beforeEach(function(){
-        shoppingCartRepository = new ShoppingCartRepository();
-        shoppingCartService = new ShoppingCartService(shoppingCartRepository);
+        localStorageRepository = new LocalStorageRepository();
+        shoppingCartService = new ShoppingCartService(localStorageRepository);
     });
 
     it("addToCart should call repository", function(){
-        spyOn(shoppingCartRepository, 'addToCart');
+        spyOn(localStorageRepository, 'getItem').and.returnValue('{"abc":"1"}');
+        spyOn(localStorageRepository, 'setItem');
 
         shoppingCartService.addToCart("abc");
 
-        expect(shoppingCartRepository.addToCart).toHaveBeenCalled();
+        expect(localStorageRepository.getItem).toHaveBeenCalled();
+        expect(localStorageRepository.setItem).toHaveBeenCalled();
     });
 });
