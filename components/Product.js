@@ -9,6 +9,9 @@ export default function Product(props){
                 <div>
                     {props.displayId}
                 </div>
+                <div className="ADD TO CART">
+                    
+                </div>
                 <div>
                     <NavLink to="/purchaseComplete">BUY NOW</NavLink>
                 </div>
