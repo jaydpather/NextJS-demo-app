@@ -39,6 +39,7 @@ function App() {
   return(
     <div>
       <h1>Welcome to my online store!</h1>
+      <br/>
       <nav>
       </nav>
 

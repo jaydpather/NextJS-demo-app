@@ -15,8 +15,9 @@ export default function Product(props){
             </div>
             <style jsx>{`
                 .product{
-                    margin-right:10px;
-                    margin-bottom:10px;
+                    margin-right: 1%;
+                    margin-bottom: 1%;
+                    display: inline-block;
                 }
             `}</style>
         </div>
