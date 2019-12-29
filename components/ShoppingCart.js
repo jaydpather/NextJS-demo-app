@@ -1,4 +1,4 @@
-import ShoppingCartItemList from './ShoppingCartItemList'
+import { ShoppingCartItemList, ShoppingCartFooter } from './ShoppingCartItemList'
 import ReactDOM from 'react-dom'
 
 var _shoppingCartService = null; //todo: side effect. maybe just don't initialize it. then you're only assiging a value once. (except JS probably has a default value);
@@ -26,6 +26,8 @@ function ShoppingCart(props){
                             </thead>
                             <tbody id="shoppingCartTBody">
                             </tbody>
+                            <tfoot id="shoppingCartTFoot" className="table-info">
+                            </tfoot>
                         </table>
                     </div>
                     <div className="modal-footer">
@@ -39,15 +41,30 @@ function ShoppingCart(props){
 
 
 function PopulateCartUI(){
-    var tbody = document.getElementById("shoppingCartTBody"); //todo: can we avoid a call to getElementById? Seems like there should be a react function for this
-
     var cart = _shoppingCartService.loadCart(); //todo: pass ShoppingCartService through props
+    
+    var cartDataSource = createCartDataSource(cart);
+    populateCartBody(cartDataSource);
+    populateCartFooter(cartDataSource);
+}
+
+function createCartDataSource(cart){ //this method converts a dictionary to an array
     var cartDataSource = [];
     for(var curProductDisplayId in cart){
         cartDataSource.push({Product: curProductDisplayId, Quantity: cart[curProductDisplayId]});
     }
 
-    ReactDOM.render(<ShoppingCartItemList dataSource={cartDataSource} />, tbody);
+    return cartDataSource;
+}
+
+function populateCartBody(cartDataSource){
+    var tBody = document.getElementById("shoppingCartTBody"); //todo: can we avoid a call to getElementById? Seems like there should be a react function for this
+    ReactDOM.render(<ShoppingCartItemList dataSource={cartDataSource} />, tBody);
+}
+
+function populateCartFooter(cartDataSource){
+    var tFoot = document.getElementById("shoppingCartTFoot");
+    ReactDOM.render(<ShoppingCartFooter dataSource={cartDataSource} />, tFoot);
 }
 
 export{

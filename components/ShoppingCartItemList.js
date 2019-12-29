@@ -1,4 +1,4 @@
-export default function ShoppingCartItemList(props){
+function ShoppingCartItemList(props){
 
     if(props.dataSource.length != 0){
         return props.dataSource.map( curItem => 
@@ -28,4 +28,24 @@ function ShoppingCartEmpty(){
             </td>
         </tr>
     );
+}
+
+function ShoppingCartFooter(cartDataSource){
+    //todo: find the total with reduce:
+    //.reduce((total, current) => total + current);
+    var totalQuantity = 0;
+    for(var i=0; i < cartDataSource.length; i++) {
+        totalQuantity += cartDataSource[i].Quantity;
+    }
+    
+    return(
+        <tr>
+            <td>Total:</td>
+            <td>{totalQuantity}</td>
+        </tr>
+    );
+}
+
+export {
+    ShoppingCartItemList, ShoppingCartFooter
 }
