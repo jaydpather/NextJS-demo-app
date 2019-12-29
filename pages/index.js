@@ -8,7 +8,8 @@ import LocalStorageRepository from "../localDataAccess/localStorageRepository";
 
 import PurchaseComplete from '../components/PurchaseComplete'
 import ProductGrid from "../components/ProductGrid";
-
+import ShoppingCart from '../components/ShoppingCart';
+import ShoppingCartButton from '../components/ShoppingCartButton';
 
 
 
@@ -43,8 +44,11 @@ function App() {
     <div>
       <h1>Welcome to my online store!</h1>
       <br/>
-      <nav>
+      <nav className="nav">
+        <ShoppingCartButton dataTarget="#shoppingCart" />
       </nav>
+
+      <ShoppingCart id="shoppingCart" />
 
       <Switch>
         <Route path="/" exact render={(props) => 
@@ -58,6 +62,11 @@ function App() {
         
         <Route component={NotFound}/>
       </Switch>
+      <style jsx>{`
+        .nav{
+          padding:1%;
+        }    
+      `}</style>
     </div>
   );
 }
