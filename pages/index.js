@@ -48,7 +48,7 @@ function App() {
         <ShoppingCartButton dataTarget="#shoppingCart" />
       </nav>
 
-      <ShoppingCart id="shoppingCart" />
+      <ShoppingCart id="shoppingCart" ShoppingCartService={shoppingCartService} />
 
       <Switch>
         <Route path="/" exact render={(props) => 

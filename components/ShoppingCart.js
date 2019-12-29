@@ -1,3 +1,5 @@
+import ShoppingCartItem from './ShoppingCartItem'
+
 export default function ShoppingCart(props){
     return (
         <div class="modal fade" id={props.id} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -10,7 +12,14 @@ export default function ShoppingCart(props){
                         </button>
                     </div>
                     <div class="modal-body">
-                        Items in cart will show here
+                        <table>
+                            <thead>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -20,3 +29,9 @@ export default function ShoppingCart(props){
         </div>
     );
 }
+
+/*
+{props.ShoppingCartService.loadCart().map(cartItem => 
+                                    <ShoppingCartItem />)
+                                }
+*/

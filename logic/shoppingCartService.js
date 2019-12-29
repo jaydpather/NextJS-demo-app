@@ -15,6 +15,7 @@ export class ShoppingCartServicePure{
     }
 
     getNewQuantity(cart, productDisplayId, quantityDelta){
+        //todo: should we call handleNullCart here too?
         var existingQty = (cart.hasOwnProperty(productDisplayId)) ? cart[productDisplayId] : 0;
         return existingQty + quantityDelta;
     }
@@ -45,7 +46,7 @@ export default class ShoppingCartService{
     loadCart(){
         const jsonCart = this.LocalStorageRepository.getItem(this.localStorageKey);
         const cart = JSON.parse(jsonCart);
-        return cart;
+        return this.PureService.handleNullCart(cart);
     }
 
     saveCart(cart)
