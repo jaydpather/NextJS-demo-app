@@ -7,7 +7,7 @@ function ShoppingCart(props){
     _shoppingCartService = props.ShoppingCartService;
 
     return (
-        <div className="modal fade" id={props.id} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id={props.id} tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -19,8 +19,10 @@ function ShoppingCart(props){
                     <div className="modal-body">
                         <table className="table table-striped table-sm">
                             <thead className="table-primary">
-                                <th>Product</th>
-                                <th>Quantity</th>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                </tr>
                             </thead>
                             <tbody id="shoppingCartTBody">
                             </tbody>

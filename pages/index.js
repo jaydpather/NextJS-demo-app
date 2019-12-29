@@ -86,3 +86,5 @@ function App() {
 }
 
 export default App;
+
+//todo: console message on page load: Warning: Each child in a list should have a unique "key" prop.
