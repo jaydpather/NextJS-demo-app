@@ -8,7 +8,7 @@ import LocalStorageRepository from "../localDataAccess/localStorageRepository";
 
 import PurchaseComplete from '../components/PurchaseComplete'
 import ProductGrid from "../components/ProductGrid";
-import ShoppingCart from '../components/ShoppingCart';
+import { ShoppingCart, PopulateCartUI } from '../components/ShoppingCart';
 import ShoppingCartButton from '../components/ShoppingCartButton';
 
 
@@ -45,7 +45,7 @@ function App() {
       <h1>Welcome to my online store!</h1>
       <br/>
       <nav className="nav">
-        <ShoppingCartButton dataTarget="#shoppingCart" />
+        <ShoppingCartButton dataTarget="#shoppingCart" onClick={PopulateCartUI} />
       </nav>
 
       <ShoppingCart id="shoppingCart" ShoppingCartService={shoppingCartService} />
