@@ -1,7 +1,11 @@
-import ShoppingCartItem from './ShoppingCartItem'
+import ShoppingCartItemList from './ShoppingCartItemList'
 import ReactDOM from 'react-dom'
 
+var _shoppingCartService = null; //todo: side effect. maybe just don't initialize it. then you're only assiging a value once. (except JS probably has a default value);
+
 function ShoppingCart(props){
+    _shoppingCartService = props.ShoppingCartService;
+
     return (
         <div className="modal fade" id={props.id} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
@@ -13,10 +17,10 @@ function ShoppingCart(props){
                         </button>
                     </div>
                     <div className="modal-body">
-                        <table>
+                        <table className="grid">
                             <thead>
-                                <th>Product</th>
-                                <th>Quantity</th>
+                                <th className="gridCell">Product</th>
+                                <th className="gridCell">Quantity</th>
                             </thead>
                             <tbody id="shoppingCartTBody">
                             </tbody>
@@ -35,7 +39,13 @@ function ShoppingCart(props){
 function PopulateCartUI(){
     var tbody = document.getElementById("shoppingCartTBody"); //todo: can we avoid a call to getElementById? Seems like there should be a react function for this
 
-    ReactDOM.render(<ShoppingCartItem />, tbody)
+    var cart = _shoppingCartService.loadCart(); //todo: pass ShoppingCartService through props
+    var cartDataSource = [];
+    for(var curProductDisplayId in cart){
+        cartDataSource.push({Product: curProductDisplayId, Quantity: cart[curProductDisplayId]});
+    }
+
+    ReactDOM.render(<ShoppingCartItemList dataSource={cartDataSource} />, tbody);
 }
 
 export{

@@ -1,5 +1,5 @@
 function btnShowCart_Click(props){
-    props.onClick();
+    props.onClick(props);
 }
 
 export default function ShoppingCartButton(props){

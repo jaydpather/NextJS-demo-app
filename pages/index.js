@@ -67,6 +67,21 @@ function App() {
           padding:1%;
         }    
       `}</style>
+      /*todo: put global styles in another file */
+      <style jsx global>{`
+        .grid{
+          border-spacing:10px 3px;
+          border-collapse: collapse;
+          border: solid 1px black;
+        }
+
+        .gridCell{
+          text-align: center;
+          padding-left: 10px;
+          padding-right: 10px;
+          border: solid 1px black;
+        }
+      `}</style>
     </div>
   );
 }
