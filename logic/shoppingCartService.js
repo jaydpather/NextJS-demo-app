@@ -1,29 +1,9 @@
-export default class ShoppingCartService{
-    constructor(localStorageRepository){
-        this.localStorageRepository = localStorageRepository;
-        this.localStorageKey = "shoppingCart";
-    }
+export class ShoppingCartServicePure{
+    //todo: howcome I can instantiate this even though I didn't declare a constructor. (wasn't this a compile error on another class?)
 
-    addToCart(productDisplayId){
-        var cart = this.getCart();
-        var newCart = this.modifyQuantity(cart, productDisplayId, 1);
-        this.setCart(newCart);
-    }
-    //TODO: unit tests for all methods
+    modifyQuantity(loadedCart, productDisplayId, quantityDelta){        
+        var cart = this.handleNullCart(loadedCart);
 
-    getCart(){
-        const jsonCart = this.localStorageRepository.getItem(this.localStorageKey);
-        const cart = JSON.parse(jsonCart);
-        return this.initCart(cart);
-    }
-
-    setCart(cart)
-    {
-        var jsonCart = JSON.stringify(cart);
-        this.localStorageRepository.setItem(this.localStorageKey, jsonCart);
-    }
-
-    modifyQuantity(cart, productDisplayId, quantityDelta){        
         var newQty = this.getNewQuantity(cart, productDisplayId, quantityDelta);
 
         var newCart = {}; //going to do some side effects to this local var, which nobody else is referencing
@@ -39,10 +19,38 @@ export default class ShoppingCartService{
         return existingQty + quantityDelta;
     }
 
-    initCart(cart){
-        if(cart != null)
+    handleNullCart(cart){
+        if(cart != null) //todo: test on different browsers. maybe the cart is undefined on some browsers
             return cart;
         else
             return { };
+    }
+}
+
+export default class ShoppingCartService{
+    constructor(localStorageRepository){
+        this.LocalStorageRepository = localStorageRepository;
+        this.localStorageKey = "shoppingCart";
+
+        this.PureService = new ShoppingCartServicePure();
+    }
+
+    addToCart(productDisplayId){
+        var cart = this.loadCart();
+        var newCart = this.PureService.modifyQuantity(cart, productDisplayId, 1);
+        this.saveCart(newCart);
+    }
+    //TODO: unit tests for all methods
+
+    loadCart(){
+        const jsonCart = this.LocalStorageRepository.getItem(this.localStorageKey);
+        const cart = JSON.parse(jsonCart);
+        return cart;
+    }
+
+    saveCart(cart)
+    {
+        var jsonCart = JSON.stringify(cart);
+        this.LocalStorageRepository.setItem(this.localStorageKey, jsonCart);
     }
 }
