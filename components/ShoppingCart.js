@@ -17,10 +17,10 @@ function ShoppingCart(props){
                         </button>
                     </div>
                     <div className="modal-body">
-                        <table className="grid">
-                            <thead>
-                                <th className="gridCell">Product</th>
-                                <th className="gridCell">Quantity</th>
+                        <table className="table table-striped table-sm">
+                            <thead className="table-primary">
+                                <th>Product</th>
+                                <th>Quantity</th>
                             </thead>
                             <tbody id="shoppingCartTBody">
                             </tbody>

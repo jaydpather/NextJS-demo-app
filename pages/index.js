@@ -67,7 +67,6 @@ function App() {
           padding:1%;
         }    
       `}</style>
-      /*todo: put global styles in another file */
       <style jsx global>{`
         .grid{
           border-spacing:10px 3px;
@@ -83,7 +82,7 @@ function App() {
         }
       `}</style>
     </div>
-  );
+  ); //todo: put global styles in another file 
 }
 
 export default App;

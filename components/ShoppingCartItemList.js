@@ -6,8 +6,8 @@ export default function ShoppingCartItemList(props){
 function ShoppingCartItem(props){
     return (
         <tr>
-            <td className="gridCell">{props.Product}</td>
-            <td className="gridCell">{props.Quantity}</td>
+            <td>{props.Product}</td>
+            <td>{props.Quantity}</td>
         </tr>
     );
 }
