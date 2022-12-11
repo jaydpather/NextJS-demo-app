@@ -22,7 +22,7 @@
   "license": "ISC",
   "dependencies": {
     "babel-preset-es2015": "^6.24.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "jasmine": "^3.5.0",
     "next": "^9.0.2",
     "next-server": "^9.0.5",
